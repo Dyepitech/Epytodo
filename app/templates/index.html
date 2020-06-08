@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{%if user_data == None %}
+    {% include 'login.html' %}
+  {% endif %}
+{% block content %}
+{% if task_data != None%}
+<div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading"><h1><span class="badge badge-danger">Task not started</span></h1></h4>
+        {% for task_id in task_data.tasks %}
+        {% if "not started" in task_data.tasks[task_id].status %}
+        <span>   <font size="3">Task Name:</font>    <font size="4"><b>{{ task_data.tasks[task_id].title }}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>  <font size="3">Task Description:</font>   <font size="4"><b>{{ task_data.tasks[task_id].description}}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>   <font size="3">Task Begin:</font>     <font size="4"><b>{{ task_data.tasks[task_id].begin }}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>   <font size="3">Task End:</font>  <font size="4"><b>{{ task_data.tasks[task_id].end }}</b></font> <font size="4"><b>|</b></font></span>
+        <span>   <font size="3">Task ID:</font>    <font size="4"><b>{{ task_id }}</b></font></span>
+        <br></br>
+        <span>   <font size="4"><b>________________________________________________________________________________________________________________________________________________________________________________________________</b></font></span>
+        <br></br>
+       {% endif %}
+        {% endfor %}
+</div>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading"><h1><span class="badge badge-warning">Task in progress</span></h1></h4>
+        {% for task_id in task_data.tasks %}
+        {% if "in progress" in task_data.tasks[task_id].status %}
+        <span>   <font size="3">Task Name:</font>    <font size="4"><b>{{ task_data.tasks[task_id].title }}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>  <font size="3">Task Description:</font>   <font size="4"><b>{{ task_data.tasks[task_id].description}}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>   <font size="3">Task Begin:</font>     <font size="4"><b>{{ task_data.tasks[task_id].begin }}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>   <font size="3">Task End:</font>  <font size="4"><b>{{ task_data.tasks[task_id].end }}</b></font> <font size="4"><b>|</b></font></span>
+        <span>   <font size="3">Task ID:</font>    <font size="4"><b>{{ task_id }}</b></font></span>
+        <br></br>
+        <span>   <font size="4"><b>________________________________________________________________________________________________________________________________________________________________________________________________</b></font></span>
+        <br></br>
+       {% endif %}
+        {% endfor %}
+    </div>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"><h1><span class="badge badge-success">Task Ended</span></h1></h4>
+        {% for task_id in task_data.tasks %}
+        {% if "done" in task_data.tasks[task_id].status %}
+        <span>   <font size="3">Task Name:</font>    <font size="4"><b>{{ task_data.tasks[task_id].title }}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>  <font size="3">Task Description:</font>   <font size="4"><b>{{ task_data.tasks[task_id].description}}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>   <font size="3">Task Begin:</font>     <font size="4"><b>{{ task_data.tasks[task_id].begin }}</b></font> <font size="4"><b>|</b> </font></span>
+        <span>   <font size="3">Task End:</font>  <font size="4"><b>{{ task_data.tasks[task_id].end }}</b></font> <font size="4"><b>|</b></font></span>
+        <span>   <font size="3">Task ID:</font>    <font size="4"><b>{{ task_id }}</b></font></span>
+        <br></br>
+        <span>   <font size="4"><b>________________________________________________________________________________________________________________________________________________________________________________________________</b></font></span>
+        <br></br>
+       {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}
